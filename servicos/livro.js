@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function getTodosLivros() {
-  JSON.parse(fs.readFileSync("livros.json"));
+  return JSON.parse(fs.readFileSync("livros.json"));
 }
 
 function getLivrosPorId(id) {

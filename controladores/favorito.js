@@ -14,11 +14,14 @@ function postFavorito(req, res) {
   try {
     const id = req.params.id;
     insereFavorito(id);
-    res.status(201);
-    res.send("Livro favorito inserido com sucesso!");
+    res.status(201).send("Livro favorito inserido com sucesso!");
   } catch (error) {
-    res.status(500);
-    res.send(error.message);
+    
+    if (error.message === "Este livro já está nos seus favoritos.") {
+      res.status(400).send(error.message); 
+    } else {
+      res.status(500).send(error.message); 
+    }
   }
 }
 
